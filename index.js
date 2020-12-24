@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 // Initializing commands
@@ -65,4 +65,4 @@ bot.on('message', (msg) => {
 });
 global.bot = bot;
 bot.login(TOKEN);
-io.listen(3000);
+io.listen(process.env.PORT || 3000);
