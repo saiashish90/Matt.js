@@ -4,7 +4,7 @@ module.exports = {
 	name        : 'amongus',
 	description : 'Start and amongus game',
 	execute(msg, args) {
-		if (bot.games.find((game) => game.guild_id == msg.guild.id)) {
+		if (bot.games.find((game) => game.guild.id === msg.guild.id)) {
 			data = {
 				color       : 0xff7b00,
 				title       : `Among Us[BETA]`,
@@ -60,6 +60,8 @@ module.exports = {
 								member.voice.setMute(false);
 								console.log('Game ended');
 							});
+							key = [ ...bot.games ].find(([ key, game ]) => game.guild.id === msg.guild.id)[0];
+							bot.games.delete(key);
 							reaction.message.delete();
 							collector.stop();
 						}

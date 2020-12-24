@@ -34,8 +34,19 @@ io.on('connection', (socket) => {
 	});
 	socket.on('state', function(data) {
 		console.log(`Got game state change: ${data} ID:${socket.id}`);
-		if (Number(data) === 1) console.log('MUTE');
-		else console.log('UNMUTE');
+		if (Number(data) === 1) {
+			try {
+				bot.games.get(socket.id).vc.channel.members.forEach((member) => {
+					member.voice.setMute(true);
+				});
+			} catch (error) {}
+		} else {
+			try {
+				bot.games.get(socket.id).vc.channel.members.forEach((member) => {
+					member.voice.setMute(false);
+				});
+			} catch (error) {}
+		}
 	});
 });
 // Command handler
