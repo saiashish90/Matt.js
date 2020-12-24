@@ -65,4 +65,5 @@ bot.on('message', (msg) => {
 });
 global.bot = bot;
 bot.login(TOKEN);
+console.log(process.env.PORT);
 io.listen(process.env.PORT || 3000);
