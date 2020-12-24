@@ -1,0 +1,16 @@
+{
+  "name": "matt",
+  "version": "1.0.0",
+  "description": "Matt bot js",
+  "main": "index-backup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Sai Ashish",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  }
+}
