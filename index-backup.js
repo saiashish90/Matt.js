@@ -5,7 +5,7 @@ const io = require('socket.io')();
 io.on('connection', (socket) => {
 	socket.on('connectCode', function(data) {
 		//NOT GAME CODE. Type: String
-		console.log(`Got connect code: ${data}`);
+		console.log(`Got connect code: ${data} ID:${socket.id}`);
 	});
 
 	socket.on('botID', function(data) {
@@ -15,7 +15,7 @@ io.on('connection', (socket) => {
 
 	socket.on('state', function(data) {
 		//Sent on game change, like game phase. Type: GameStateEvent
-		console.log(`Got game state change: ${data}`);
+		console.log(`Got game state change: ${data} ID:${socket.id}`);
 	});
 
 	socket.on('player', function(data) {
@@ -42,18 +42,18 @@ io.on('connection', (socket) => {
 		//Sent on discord update task Failed
 		console.log(`Got failed Task: ${data}`);
 	});
-	if (false) {
-		socket.emit('requestdata'); //Requests resend of data from the capture
-		socket.emit('killself'); //Forces capture to close.
-		socket.emit('modify', {
-			guildID    : 1234,
-			userID     : 1234,
-			parameters : {
-				deaf : true,
-				mute : true
-			},
-			taskID     : 'HasToBeAString'
-		}); //sends user update to capture. Will only process if it has a discord bot linked.
+	if (true) {
+		// socket.emit('requestdata'); //Requests resend of data from the capture
+		// socket.emit('killself'); //Forces capture to close.
+		// socket.emit('modify', {
+		// 	guildID    : 1234,
+		// 	userID     : 1234,
+		// 	parameters : {
+		// 		deaf : true,
+		// 		mute : true
+		// 	},
+		// 	taskID     : 'HasToBeAString'
+		// });
 	}
 });
 
