@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { wakeDyno } = require('heroku-keep-awake');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 // Initializing commands
@@ -70,7 +71,15 @@ bot.on('message', (msg) => {
 		msg.reply('there was an error trying to execute that command!');
 	}
 });
+
 global.bot = bot;
 bot.login(TOKEN);
+// for keeping heroku wake
+const DYNO_URL = 'https://matttbot.herokuapp.com';
+const opts = {
+	interval : 29,
+	logging  : false
+};
+wakeDyno(DYNO_URL, opts);
 console.log(process.env.PORT);
 io.listen(process.env.PORT || 3000);
