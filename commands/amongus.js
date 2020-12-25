@@ -66,13 +66,11 @@ module.exports = {
 							vc = bot.games.find((game) => game.guild.id === msg.guild.id).vc;
 							vc.channel.members.forEach((member) => {
 								member.voice.setMute(true);
-								console.log('muted');
 							});
 						} else if (reaction.emoji.name === '🛑') {
 							vc = bot.games.find((game) => game.guild.id === msg.guild.id).vc;
 							vc.channel.members.forEach((member) => {
 								member.voice.setMute(false);
-								console.log('Game ended');
 							});
 							key = [ ...bot.games ].find(([ key, game ]) => game.guild.id === msg.guild.id)[0];
 							bot.games.delete(key);
@@ -85,7 +83,6 @@ module.exports = {
 							vc = bot.games.find((game) => game.guild.id === msg.guild.id).vc;
 							vc.channel.members.forEach((member) => {
 								member.voice.setMute(false);
-								console.log('unmuted');
 							});
 						}
 					});

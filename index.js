@@ -8,7 +8,6 @@ const botCommands = require('./commands');
 Object.keys(botCommands).map((key) => {
 	bot.commands.set(botCommands[key].name, botCommands[key]);
 });
-
 // Bot variables
 const TOKEN = process.env.TOKEN;
 const prefix = '$';
@@ -23,18 +22,13 @@ bot.games = new Discord.Collection();
 const io = require('socket.io')();
 io.on('connection', (socket) => {
 	socket.on('connectCode', function(data) {
-		console.log(`Got connect code: ${data} ID:${socket.id}`);
 		if (bot.games.has(Number(data))) {
-			console.log('game running');
 			temp = bot.games.get(Number(data));
 			bot.games.set(socket.id, temp);
 			bot.games.delete(Number(data));
-		} else {
-			console.log('Use command on discord first');
 		}
 	});
 	socket.on('state', function(data) {
-		console.log(`Got game state change: ${data} ID:${socket.id}`);
 		if (Number(data) === 1) {
 			try {
 				bot.games.get(socket.id).vc.channel.members.forEach((member) => {
@@ -82,5 +76,4 @@ const opts = {
 	stopTimes : { start: '00:00', end: '00:00' }
 };
 wakeDyno(DYNO_URL, opts);
-console.log(process.env.PORT);
 io.listen(process.env.PORT || 3000);
