@@ -30,11 +30,11 @@ module.exports = {
 				data = {
 					color       : 0xff7b00,
 					title       : `Among Us[BETA]`,
-					description : `Connect token : ${token}\n
-							Connect URL : https://matttbot.herokuapp.com\n\n
-							Enter token and URL in AUCapture app\n
-                            Mute/Unmute should happen automatically\n\n
-                            React to the speaker to mute/unmute.\n
+					description : `Connect token : ${token}
+							Connect URL : https://matttbot.herokuapp.com\n
+							Enter token and URL in AUCapture app
+                            Mute/Unmute should happen automatically\n
+                            React to the speaker to mute/unmute.
                             React to the stop to stop the game`
 				};
 				embed = new MessageEmbed(data);
