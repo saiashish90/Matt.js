@@ -77,8 +77,9 @@ bot.login(TOKEN);
 // for keeping heroku wake
 const DYNO_URL = 'https://matttbot.herokuapp.com';
 const opts = {
-	interval : 29,
-	logging  : false
+	interval  : 29,
+	logging   : false,
+	stopTimes : { start: '00:00', end: '00:00' }
 };
 wakeDyno(DYNO_URL, opts);
 console.log(process.env.PORT);
