@@ -10,7 +10,7 @@ module.exports = {
 		data = {
 			color       : 0xff7b00,
 			title       : `Matt`,
-			description : `$matt [anything you want]\nYou can ask me anything you want, or just talk to me :))`
+			description : `$matt [anything you want]\nYou can now talk to me.`
 		};
 		embed = new MessageEmbed(data);
 		msg.channel.send(embed);
