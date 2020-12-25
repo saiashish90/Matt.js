@@ -3,6 +3,18 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name        : 'amongus',
 	description : 'Start and amongus game',
+	args        : false,
+	argsLen     : 0,
+	guildOnly   : true,
+	help(msg) {
+		data = {
+			color       : 0xff7b00,
+			title       : `AmongUs`,
+			description : `$amongus\nAllows auto-mute functionality using AUCapture application.`
+		};
+		embed = new MessageEmbed(data);
+		msg.channel.send(embed);
+	},
 	execute(msg, args) {
 		if (bot.games.find((game) => game.guild.id === msg.guild.id)) {
 			data = {
@@ -18,8 +30,10 @@ module.exports = {
 				data = {
 					color       : 0xff7b00,
 					title       : `Among Us[BETA]`,
-					description : `Connect token:${token}\n
-                            Mute/Unmute should happen automatically\n
+					description : `Connect token : ${token}\n
+							Connect URL : https://matttbot.herokuapp.com\n\n
+							Enter token and URL in AUCapture app\n
+                            Mute/Unmute should happen automatically\n\n
                             React to the speaker to mute/unmute.\n
                             React to the stop to stop the game`
 				};

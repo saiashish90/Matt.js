@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 // Initializing commands
@@ -54,10 +54,17 @@ bot.on('message', (msg) => {
 	if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 	const commandBody = msg.content.slice(prefix.length);
 	const args = commandBody.split(' ');
-	const command = args.shift().toLowerCase();
-	if (!bot.commands.has(command)) return;
+	const commandName = args.shift().toLowerCase();
+	if (!bot.commands.has(commandName)) return;
+	const command = bot.commands.get(commandName);
 	try {
-		bot.commands.get(command).execute(msg, args);
+		if (command.guildOnly && msg.channel.type === 'dm') {
+			return msg.reply("I can't execute that command inside DMs!");
+		}
+		if (command.args && args.length !== command.argsLen) {
+			return command.help(msg);
+		}
+		command.execute(msg, args);
 	} catch (error) {
 		console.error(error);
 		msg.reply('there was an error trying to execute that command!');
