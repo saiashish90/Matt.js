@@ -10,7 +10,7 @@ module.exports = {
 		data = {
 			color       : 0xff7b00,
 			title       : `Ping`,
-			description : `$ping [role/user] [n]`
+			description : `\`$ping [role/user] [n]\`\n\nPing spams tagged user`
 		};
 		embed = new MessageEmbed(data);
 		msg.channel.send(embed);

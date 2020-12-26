@@ -10,7 +10,7 @@ module.exports = {
 		data = {
 			color       : 0xff7b00,
 			title       : `AmongUs`,
-			description : `$amongus\nAllows auto-mute functionality using AUCapture application.`
+			description : `\`$amongus\`\n\nAllows auto-mute functionality using AUCapture application.`
 		};
 		embed = new MessageEmbed(data);
 		msg.channel.send(embed);

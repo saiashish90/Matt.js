@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 let alexa = require('alexa-bot-api');
 let ai = new alexa('aw2plm');
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
 		data = {
 			color       : 0xff7b00,
 			title       : `Matt`,
-			description : `$matt [anything you want]\nYou can now talk to me.`
+			description : `\`$matt [anything you want]\`\n\nYou can now talk to me.`
 		};
 		embed = new MessageEmbed(data);
 		msg.channel.send(embed);
