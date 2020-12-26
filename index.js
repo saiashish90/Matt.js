@@ -16,7 +16,6 @@ bot.on('ready', () => {
 	console.info(`Logged in as ${bot.user.tag}!`);
 	bot.user.setActivity('Wii Sports', { type: 'PLAYING' });
 });
-
 //Amongus capture socketio
 bot.games = new Discord.Collection();
 const io = require('socket.io')();

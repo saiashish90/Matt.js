@@ -15,7 +15,7 @@ module.exports = {
 			}
 		} else {
 			let description = '';
-			description = description + commands.map((command, index) => `${index + 1}. $${command.name}`).join('\n');
+			description = commands.map((command) => `$${command.name}`).join('\n');
 			data = {
 				color       : 0xff7b00,
 				title       : `List of all the commands\n`,
