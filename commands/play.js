@@ -1,6 +1,19 @@
 const { MessageEmbed } = require('discord.js');
-const soundboard = require('../soundboard.json');
+const soundboardobj = require('../soundboard.json');
+const flattenObject = (obj) => {
+	const flattened = {};
 
+	Object.keys(obj).forEach((key) => {
+		if (typeof obj[key] === 'object' && obj[key] !== null) {
+			Object.assign(flattened, flattenObject(obj[key]));
+		} else {
+			flattened[key] = obj[key];
+		}
+	});
+
+	return flattened;
+};
+const soundboard = flattenObject(soundboardobj);
 module.exports = {
 	name        : 'play',
 	description : "Play' sound effects",
@@ -8,7 +21,13 @@ module.exports = {
 	argsLen     : 1,
 	guildOnly   : true,
 	help(msg) {
-		sounds = Object.keys(soundboard).join('\n');
+		sounds = '';
+		for (const key in soundboardobj) {
+			sounds = sounds + `\n**${key}**\n`;
+			for (const sound in soundboardobj[key]) {
+				sounds = sounds + `${sound}\n`;
+			}
+		}
 		console.log(sounds);
 		data = {
 			color       : 0xff7b00,
@@ -19,11 +38,11 @@ module.exports = {
 		msg.channel.send(embed);
 	},
 	async execute(msg, args) {
-		console.log('playsiong');
 		if (msg.member.voice && msg.member.voice.channel) {
 			if (soundboard.hasOwnProperty(args)) {
 				const connection = await msg.member.voice.channel.join();
 				const dispatcher = connection.play(soundboard[args]);
+				dispatcher.on('error', console.error);
 				dispatcher.on('finish', () => {
 					connection.disconnect();
 				});
