@@ -70,7 +70,7 @@ bot.login(TOKEN);
 // for keeping heroku wake
 const DYNO_URL = 'https://matttbot.herokuapp.com';
 const opts = {
-	interval  : 29,
+	interval  : 25,
 	logging   : false,
 	stopTimes : { start: '00:00', end: '00:00' }
 };
