@@ -3,5 +3,6 @@ module.exports = {
 	Amongus : require('./amongus'),
 	Help    : require('./help'),
 	Matt    : require('./matt'),
-	Play    : require('./play')
+	Play    : require('./play'),
+	MC      : require('./mc')
 };

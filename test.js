@@ -1,10 +1,12 @@
-const { description } = require('./commands/play');
-const soundboard = require('./soundboard.json');
-sounds = '';
-for (const key in soundboard) {
-	sounds = sounds + `\n${key}\n`;
-	for (const sound in soundboard[key]) {
-		sounds = sounds + `${sound}\n`;
-	}
+require('dotenv').config();
+var admin = require('firebase-admin');
+admin.initializeApp({
+	credential  : admin.credential.cert(JSON.parse(process.env.GOOGLE)),
+	databaseURL : 'https://amongus-44241.firebaseio.com'
+});
+const db = admin.firestore();
+async function as() {
+	const snapshot = await db.collection('Mattt').doc('uasd').get();
+	console.log(await snapshot.data());
 }
-console.log(sounds);
+as();
