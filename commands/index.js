@@ -1,8 +1,7 @@
 module.exports = {
-	Ping    : require('./ping'),
-	Amongus : require('./amongus'),
-	Help    : require('./help'),
-	Matt    : require('./matt'),
-	Play    : require('./play'),
-	MC      : require('./mc')
+  Ping: require("./ping"),
+  Amongus: require("./amongus"),
+  Help: require("./help"),
+  Matt: require("./matt"),
+  Play: require("./play"),
 };
