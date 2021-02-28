@@ -44,7 +44,7 @@ module.exports = {
 				return;
 			}
 			for (let i = 0; i < args[1]; i++) {
-				if (i === 25) {
+				if (i === 24) {
 					data = {
 						color       : 0xff7b00,
 						title       : `Ping`,
